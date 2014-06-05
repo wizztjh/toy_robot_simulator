@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require "thor"
+Dir[File.dirname(__FILE__) + "/lib/*.rb"].each {|file| require file }
+
+SimulatorCommand.start(['simulate_from_instruction_file']+ ARGV)
