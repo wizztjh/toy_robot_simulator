@@ -21,41 +21,25 @@ describe Simulator do
     end
   end
 
-  describe "#move" do
-    describe "moves the robot one grid to the direction" do
+  shared_examples 'a robot movement' do |direction, expected_robot_status|
+    describe "when robot is facing #{direction}" do
       before { subject.place 2, 2, direction }
 
-      describe 'when robot is facing north' do
-        let(:direction) {'NORTH'}
-        it 'moves one grid to the north' do
-          subject.move
-          expect(subject.robot).to include x: 2, y: 3, direction: 'NORTH'
-        end
+      it "moves one grid to the #{direction}" do
+        subject.move
+        expect(subject.robot).to include expected_robot_status
       end
 
-      describe 'when robot is facing south' do
-        let(:direction) {'SOUTH'}
-        it 'moves one grid to the south' do
-          subject.move
-          expect(subject.robot).to include x: 2, y: 1, direction: 'SOUTH'
-        end
-      end
+    end
+  end
 
-      describe 'when robot is facing west' do
-        let(:direction) {'WEST'}
-        it 'moves one grid to the west' do
-          subject.move
-          expect(subject.robot).to include x: 1, y: 2, direction: 'WEST'
-        end
-      end
+  describe "#move" do
+    describe "moves the robot one grid to the direction" do
 
-      describe 'when robot is facing east' do
-        let(:direction) {'EAST'}
-        it 'moves one grid to the east' do
-          subject.move
-          expect(subject.robot).to include x: 3, y: 2, direction: 'EAST'
-        end
-      end
+      it_behaves_like "a robot movement", "NORTH", x: 2, y: 3, direction: 'NORTH'
+      it_behaves_like "a robot movement", "SOUTH", x: 2, y: 1, direction: 'SOUTH'
+      it_behaves_like "a robot movement", "WEST", x: 1, y: 2, direction: 'WEST'
+      it_behaves_like "a robot movement", "EAST", x: 3, y: 2, direction: 'EAST'
 
     end
   end
