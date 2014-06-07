@@ -11,3 +11,12 @@ RSpec.configure do |config|
 
   config.order = 'random'
 end
+
+#spec helper
+def create_instruction_file(instructions)
+  Tempfile.open('instruction') do |file|
+    file.write instructions
+    file.rewind
+    yield(file)
+  end
+end
