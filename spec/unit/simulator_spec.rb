@@ -14,7 +14,7 @@ describe Simulator do
     describe "when direction is not valid"
   end
 
-  describe "#report" do
+  describe '#report' do
     it 'reports the location and direction of the robot' do
       subject.place 1, 2, 'NORTH'
       expect { subject.report }.to output("1,2,NORTH\n").to_stdout
@@ -33,8 +33,8 @@ describe Simulator do
     end
   end
 
-  describe "#move" do
-    describe "moves the robot one grid to the direction" do
+  describe '#move' do
+    describe 'moves the robot one grid to the direction' do
 
       it_behaves_like "a robot movement", "NORTH", x: 2, y: 3, direction: 'NORTH'
       it_behaves_like "a robot movement", "SOUTH", x: 2, y: 1, direction: 'SOUTH'

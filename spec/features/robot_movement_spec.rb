@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "Robot movement" do
+describe 'Robot movement' do
   let(:instructions) {
-    <<-EOF.gsub /^\s+/, ""
+    <<-EOF.gsub /^\s+/, ''
         PLACE 0,0,NORTH
         MOVE
         MOVE
