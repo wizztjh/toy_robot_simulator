@@ -1,6 +1,7 @@
 class Simulator
   attr_accessor :robot
   CARDINAL_DIRECTIONS = ["NORTH","EAST", "SOUTH", "WEST"]
+
   def initialize
     self.robot = {}
   end
@@ -21,6 +22,10 @@ class Simulator
     when 'SOUTH' then self.robot[:y] -=1
     when 'WEST' then self.robot[:x] -=1
     when 'EAST' then self.robot[:x] +=1
+    end
+
+    if self.robot[:x] < 0
+      self.robot[:x] = 0
     end
   end
 
