@@ -31,11 +31,18 @@ describe Simulator do
     end
 
     describe "when the next move is out of boundries" do
-      it_behaves_like 'an out of boundries movement', x: 0, y: 0, direction: "WEST"
-      it_behaves_like 'an out of boundries movement', x: 0, y: 1, direction: "WEST"
-      it_behaves_like 'an out of boundries movement', x: 0, y: 2, direction: "WEST"
-      it_behaves_like 'an out of boundries movement', x: 0, y: 3, direction: "WEST"
-      it_behaves_like 'an out of boundries movement', x: 0, y: 4, direction: "WEST"
+      describe 'when robot is facing west boundry' do
+        (0..4).each do |y|
+          it_behaves_like 'an out of boundries movement', x: 0, y: y, direction: "WEST"
+        end
+      end
+
+      describe 'when robot is facing north boundry' do
+        (0..4).each do |x|
+          it_behaves_like 'an out of boundries movement', x: x, y: 4, direction: "NORTH"
+        end
+      end
+
     end
   end
 
