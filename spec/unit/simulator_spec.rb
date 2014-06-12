@@ -43,6 +43,17 @@ describe Simulator do
         end
       end
 
+      describe 'when robot is facing east boundry' do
+        (0..4).each do |y|
+          it_behaves_like 'an out of boundries movement', x: 4, y: y, direction: "EAST"
+        end
+      end
+
+      describe 'when robot is facing south boundry' do
+        (0..4).each do |x|
+          it_behaves_like 'an out of boundries movement', x: x, y: 0, direction: "SOUTH"
+        end
+      end
     end
   end
 

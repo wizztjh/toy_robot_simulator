@@ -31,6 +31,14 @@ class Simulator
     if self.robot[:y] > 4
       self.robot[:y] = 4
     end
+
+    if self.robot[:x] > 4
+      self.robot[:x] = 4
+    end
+
+    if self.robot[:y] < 0
+      self.robot[:y] = 0
+    end
   end
 
   def left

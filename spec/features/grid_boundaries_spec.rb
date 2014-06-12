@@ -34,7 +34,7 @@ describe 'Grid boundaries' do
     create_instruction_file(instructions) do |file|
       expect {
         CLI.start(['simulate_from_instruction_file', file.path])
-      }.to output("0,5,SOUTH\n").to_stdout
+      }.to output("4,0,SOUTH\n").to_stdout
     end
   end
 end
