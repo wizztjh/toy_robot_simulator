@@ -1,5 +1,5 @@
 require 'thor'
-require 'simulator'
+require_relative './simulator'
 
 class CLI < Thor
   desc 'simulate', 'read the file'
