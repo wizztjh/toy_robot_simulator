@@ -2,6 +2,11 @@ class Simulator
   attr_accessor :robot
   CARDINAL_DIRECTIONS = ["NORTH","EAST", "SOUTH", "WEST"]
 
+  GRID = {
+    X: 0..4,
+    Y: 0..4
+  }
+
   def initialize
     self.robot = {}
   end
@@ -17,6 +22,8 @@ class Simulator
   end
 
   def move
+    original_robot = self.robot.clone
+
     case self.robot[:direction]
     when 'NORTH' then self.robot[:y] +=1
     when 'SOUTH' then self.robot[:y] -=1
@@ -24,21 +31,7 @@ class Simulator
     when 'EAST' then self.robot[:x] +=1
     end
 
-    if self.robot[:x] < 0
-      self.robot[:x] = 0
-    end
-
-    if self.robot[:y] > 4
-      self.robot[:y] = 4
-    end
-
-    if self.robot[:x] > 4
-      self.robot[:x] = 4
-    end
-
-    if self.robot[:y] < 0
-      self.robot[:y] = 0
-    end
+    self.robot = original_robot unless within_grid? #revert to original position
   end
 
   def left
@@ -50,6 +43,10 @@ class Simulator
   end
 
   private
+  def within_grid?
+    # NOTE: check if the x and y is within the GRID range
+    GRID[:X].include?(self.robot[:x]) and GRID[:Y].include?(self.robot[:y])
+  end
 
   def cardinal_direction_index
     CARDINAL_DIRECTIONS.index self.robot[:direction]
