@@ -18,7 +18,8 @@ Requirement
 
 Installation
 --------------
-While checked out at your master branch, and located in the git root. Bundle to install all the dependency.
+Check out at master branch, and locate the git root.
+Bundle to install all the dependency.
 
 ```sh
 cd toy_robot_simulator
@@ -28,12 +29,14 @@ bundle
 
 Usage
 --------------
-While checked out at your master branch, and located in the git root.
+Check out at master branch, and locate the git root.
 Run the toy_robot_simulator execution with instruction file path.
 Please go to the instruction file section for more information about the structure.
 
+A test data has been prepared to be used.
+
 ```sh
-./toy_robot_simulator instruction_file.txt
+./toy_robot_simulator test_data.txt
 ```
 
 Instruction file
@@ -52,9 +55,11 @@ Below is the list of all the available instruction and its usage:
 
 | Instruction | Arguments     | Description|
 | :-----------|:--------------| :-----|
-| PLACE     | x, y, direction | Place the robot in the grid and set the direction to where it is facing. |
-| REPORT    |  | Print out the x, y and cardinal direction of the robot |
-| MOVE      |  | Move the robot one grid to the cardinal direction of the robot|
+| PLACE     | x, y, direction | Places the robot in the grid and sets the direction to where it is facing. |
+| REPORT    |  | Prints out the x, y and cardinal direction of the robot |
+| LEFT      |  | Rotates the robot counter clockwise |
+| RIGHT     |  | Rotates the robot clockwise |
+| MOVE      |  | Moves the robot one grid to the cardinal direction of the robot|
 
 
 License
