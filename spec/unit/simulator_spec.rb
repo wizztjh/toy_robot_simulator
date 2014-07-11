@@ -19,6 +19,12 @@ describe Simulator do
       subject.place 1, 2, 'NORTH'
       expect { subject.report }.to output("1,2,NORTH\n").to_stdout
     end
+
+    describe 'when place instruction is not executed before' do
+      it 'ignores the report instruction' do
+        expect { subject.report }.to_not output(nil).to_stdout
+      end
+    end
   end
 
   describe '#move' do

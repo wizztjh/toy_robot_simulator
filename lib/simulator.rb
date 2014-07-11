@@ -8,16 +8,17 @@ class Simulator
   }
 
   def initialize
-    self.robot = {}
   end
 
   def place x, y, direction
+    self.robot = {}
     self.robot[:x] = x.to_i
     self.robot[:y] = y.to_i
     self.robot[:direction] = direction
   end
 
   def report
+    return unless robot
     puts "#{robot[:x]},#{robot[:y]},#{robot[:direction]}"
   end
 
