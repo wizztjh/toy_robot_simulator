@@ -9,9 +9,17 @@ describe Simulator do
       expect(subject.robot).to include x: 1, y: 2, direction: 'NORTH'
     end
 
-    describe "when x is not a number"
-    describe "when y is not a number"
-    describe "when direction is not valid"
+    describe 'when x is not a number'
+    describe 'when y is not a number'
+    describe 'when direction is not valid'
+
+    describe 'when place instruction run twice' do
+      it 'still places the robot' do
+        subject.place 1, 2, 'NORTH'
+        subject.place 3, 3, 'SOUTH'
+        expect(subject.robot).to include x: 3, y: 3, direction: 'SOUTH'
+      end
+    end
   end
 
   describe '#report' do
