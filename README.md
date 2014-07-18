@@ -56,11 +56,18 @@ Below is the list of all the available instruction and its usage:
 | Instruction | Arguments     | Description|
 | :-----------|:--------------| :-----|
 | PLACE     | x, y, direction | Places the robot in the grid and sets the direction to where it is facing. |
-| REPORT    |  | Prints out the x, y and cardinal direction of the robot |
+| REPORT    |  | Prints out the x, y and cardinal direction of the robot. ie. 0,1,NORTH  |
 | LEFT      |  | Rotates the robot counter clockwise |
 | RIGHT     |  | Rotates the robot clockwise |
 | MOVE      |  | Moves the robot one grid to the cardinal direction of the robot|
 
+#####Notes
+The grid is 5 units X 5 units
 
-License
-----
+The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE command.
+
+The application will discard all commands in the sequence until a valid PLACE command has been executed.
+
+The origin (0,0) is SOUTH WEST most corner.
+
+Any instruction that will cause the robot to fall out the grid will be ignored.
