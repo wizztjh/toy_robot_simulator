@@ -23,6 +23,7 @@ class Simulator
   end
 
   def move
+    return unless robot
     original_robot = self.robot.clone
 
     case self.robot[:direction]
@@ -36,10 +37,12 @@ class Simulator
   end
 
   def left
+    return unless robot
     self.robot[:direction] = CARDINAL_DIRECTIONS[(cardinal_direction_index-1)%4]
   end
 
   def right
+    return unless robot
     self.robot[:direction] = CARDINAL_DIRECTIONS[(cardinal_direction_index+1)%4]
   end
 

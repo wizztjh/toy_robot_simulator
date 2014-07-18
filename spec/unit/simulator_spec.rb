@@ -30,7 +30,7 @@ describe Simulator do
 
     describe 'when place instruction is not executed before' do
       it 'ignores the report instruction' do
-        expect { subject.report }.to_not output(nil).to_stdout
+        expect { subject.report }.to_not output.to_stdout
       end
     end
   end
@@ -68,6 +68,13 @@ describe Simulator do
           it_behaves_like 'an out of boundries movement', x: x, y: 0, direction: "SOUTH"
         end
       end
+
+      describe 'when place instruction is not executed before' do
+        it 'ignores the report instruction' do
+          expect { subject.move }.to_not change {subject.robot}
+        end
+      end
+
     end
   end
 
@@ -87,6 +94,12 @@ describe Simulator do
     it_behaves_like "a robot rotation", "WEST", "SOUTH"
     it_behaves_like "a robot rotation", "SOUTH", "EAST"
     it_behaves_like "a robot rotation", "EAST", "NORTH"
+
+    describe 'when place instruction is not executed before' do
+      it 'ignores the left instruction' do
+        expect { subject.left }.to_not change {subject.robot}
+      end
+    end
   end
 
   describe "#right" do
@@ -95,6 +108,13 @@ describe Simulator do
     it_behaves_like "a robot rotation", "EAST", "SOUTH"
     it_behaves_like "a robot rotation", "SOUTH", "WEST"
     it_behaves_like "a robot rotation", "WEST", "NORTH"
+
+    describe 'when place instruction is not executed before' do
+      it 'ignores the right instruction' do
+        expect { subject.right }.to_not change {subject.robot}
+      end
+    end
   end
+
 
 end
